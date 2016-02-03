@@ -17,6 +17,8 @@ class ViewController: UIViewController {
     var secondDec = false;
     var multiCalcs = false;
     var operation = "";
+    var SingleDecimalPls = false
+    var countingSingleDecialPls = 0;
     
     @IBOutlet weak var CalcLabel: UILabel!
     override func viewDidLoad() {
@@ -60,10 +62,14 @@ class ViewController: UIViewController {
     
     @IBAction func operation(sender: AnyObject) {
         typing = false
-        firstNumber = Float(CalcLabel.text!)!
+         firstNumber = Float(CalcLabel.text!)!
         operation = sender.currentTitle!!;
         CalcLabel.text = operation;
         multiCalcs = true;
+        SingleDecimalPls = true;
+        if SingleDecimalPls == true {
+            countingSingleDecialPls--;
+        }
     }
     @IBAction func clear(sender: AnyObject) {
         firstNumber = 0;
@@ -73,6 +79,26 @@ class ViewController: UIViewController {
         operation = "";
         CalcLabel.text = "0";
         multiCalcs = false;
+        countingSingleDecialPls = 0;
+        SingleDecimalPls = false;
+    }
+    @IBAction func SquareRoot(sender: AnyObject) {
+        firstNumber = Float(CalcLabel.text!)!
+        let number = sqrt(firstNumber)
+        CalcLabel.text = String(number)
+    }
+    @IBAction func addDecimal(sender: AnyObject) {
+        
+        if SingleDecimalPls == false && countingSingleDecialPls == 0 {
+        let number = sender.currentTitle!!;
+        CalcLabel.text = CalcLabel.text! + number;
+            countingSingleDecialPls++;
+        }
+        else if SingleDecimalPls == true && countingSingleDecialPls == 1{
+            let number = sender.currentTitle!!;
+            CalcLabel.text = CalcLabel.text! + number;
+            countingSingleDecialPls++;
+        }
     }
 }
 
