@@ -60,25 +60,6 @@ class ViewController: UIViewController {
     
     @IBAction func operation(sender: AnyObject) {
         typing = false
-        if multiCalcs == true {
-            secondNumber = Float(CalcLabel.text!)!
-            if  operation == "-" {
-                let result = firstNumber - secondNumber
-                CalcLabel.text = String(result)
-            }
-            else if operation == "+" {
-                let result = firstNumber + secondNumber
-                CalcLabel.text = String(result)
-            }
-            else if operation == "X" {
-                let result = firstNumber * secondNumber
-                CalcLabel.text = String(result)
-            }
-            else if operation == "/" {
-                let result = firstNumber / secondNumber
-                CalcLabel.text = String(result)
-            }
-        }
         firstNumber = Float(CalcLabel.text!)!
         operation = sender.currentTitle!!;
         CalcLabel.text = operation;
