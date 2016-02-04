@@ -127,10 +127,12 @@ class ViewController: UIViewController {
     @IBAction func SquareRoot(sender: AnyObject) {
         //Parse the number
         firstNumber = Float(CalcLabel.text!)!
+        var pls = Float32();
         //Sqrt the number
-        let number = sqrt(firstNumber)
+        pls = sqrtf(pls)
+        
         //Display the answer
-        CalcLabel.text = String(number)
+        CalcLabel.text = String(NSLog("%.f", sqrt(pls)))
     }
     //Function for adding a decimal to a number.
     @IBAction func addDecimal(sender: AnyObject) {
